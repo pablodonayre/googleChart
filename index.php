@@ -1,7 +1,13 @@
 <html>
     <head>
-          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+        
         <script type ="text/javascript" src="moment.js"></script>
     </head>
     <body>
@@ -10,10 +16,10 @@
 
         <div id="chart_div"></div>
         
-        <a id="30days" href="javascript:void(0)">30 days</a> |
-        <a id="60days" href="javascript:void(0)">60 days</a> |
-        <a id="1year" href="javascript:void(0)">1 Year</a> |
-        <a id="all" href="javascript:void(0)">All Time</a>
+        <a id="30days" href="javascript:void(0)" class="btn btn-primary btn-sm">30 days</a>
+        <a id="60days" href="javascript:void(0)" class="btn btn-primary btn-sm">60 days</a>
+        <a id="1year" href="javascript:void(0)" class="btn btn-primary btn-sm">1 Year</a>
+        <a id="all" href="javascript:void(0)" class="btn btn-primary btn-sm">All Time</a>
         <div>
             Chart Updated up to Date (UTC):
             <div id="div1"></div>
