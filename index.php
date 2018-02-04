@@ -121,7 +121,13 @@
                 gridlines: {count: 10},
 //                 gridlines: {color: 'none'},
                 minValue: 0                
-            }
+            },
+            explorer: { 
+                    actions: ['dragToZoom', 'rightClickToReset'],
+                    axis: 'horizontal',
+                    keepInBounds: true,
+                    maxZoomIn: 4.0
+            }              
           };
 
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
