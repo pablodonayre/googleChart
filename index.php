@@ -16,10 +16,12 @@
 
         <div id="chart_div"></div>
         
-        <a id="30days" href="javascript:void(0)" class="btn btn-primary btn-sm">30 days</a>
-        <a id="60days" href="javascript:void(0)" class="btn btn-primary btn-sm">60 days</a>
-        <a id="1year" href="javascript:void(0)" class="btn btn-primary btn-sm">1 Year</a>
-        <a id="all" href="javascript:void(0)" class="btn btn-primary btn-sm">All Time</a>
+        <div >
+            <a id="30days" href="javascript:void(0)" class="btn btn-primary btn-sm">30 days</a>
+            <a id="60days" href="javascript:void(0)" class="btn btn-primary btn-sm">60 days</a>
+            <a id="1year" href="javascript:void(0)" class="btn btn-primary btn-sm">1 Year</a>
+            <a id="all" href="javascript:void(0)" class="btn btn-primary btn-sm">All Time</a>
+        </div>
         <div>
             Chart Updated up to Date (UTC):
             <div id="div1"></div>
@@ -61,9 +63,9 @@
                 dataType: 'json',
 
                 success: function(result){
-                    
                     document.getElementById('last_update_date').innerHTML = moment(new Date(result.timestamp)).utc().format('MMMM Do YYYY, HH:mm:ss');
-                    document.getElementById('last_update_value').innerHTML = "USD $ "+result.market_price_usd.toFixed(2);
+                    var market_price = result.market_price_usd;
+                    document.getElementById('last_update_value').innerHTML = "USD $ "+market_price.toLocaleString(undefined,{minimumFractionDigits: 3, maximumFractionDigits: 3});
                 }
             });  
             
@@ -82,15 +84,21 @@
                     },
                 success: function(result){
                     var values = result.values;
-                    
+                    console.log(values);
                     for(i=0; i<values.length; i++){
-                        nodes.push([new Date(values[i].x*1000), values[i].y]);
+                        node_date= new Date(values[i].x*1000);
+
+                        console.log(node_date);
+                        
+                        nodes.push([node_date, values[i].y]);
 
                     }
                     
-//                     console.log(nodes);
+                    console.log(nodes);
                     document.getElementById('div1').innerHTML = moment(new Date(values[values.length-1].x*1000)).utc().format('MMMM Do YYYY, HH:mm:ss');
-                    document.getElementById('div2').innerHTML = "USD $ "+values[values.length-1].y.toFixed(2);
+                    
+                    var values = values[values.length-1].y;
+                    document.getElementById('div2').innerHTML = "USD $ "+values.toLocaleString(undefined,{minimumFractionDigits: 3, maximumFractionDigits: 3});
                     
                     
                     google.charts.load('current', {packages: ['corechart', 'line']});
@@ -136,6 +144,8 @@
             }              
           };
 
+            var date_format = new google.visualization.DateFormat({pattern:"MMM dd, yyyy HH:mm:ss", timeZone: 0});
+            date_format.format(data,0);
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
           chart.draw(data, options);
